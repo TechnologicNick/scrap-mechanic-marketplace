@@ -1,0 +1,87 @@
+$maxWidth: 100%;
+
+// Carrousel
+.carrousel {
+  display: grid;
+  overflow-x: scroll;
+  max-width: $maxWidth;
+  scroll-snap-type: inline mandatory;
+  grid-template-columns: repeat(var(--page-count, 2), 100%);
+  scrollbar-width: none; /* Firefox */
+  margin-inline: auto;
+
+  & > div {
+    scroll-snap-align: center;
+  }
+
+  &::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+  }
+}
+
+// Buttons
+.wrapper {
+  position: relative;
+
+  .buttons {
+    max-width: $maxWidth;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 1.6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    pointer-events: none;
+    & > * {
+      pointer-events: auto;
+    }
+  }
+}
+
+// Page numbers
+.topRight {
+  max-width: $maxWidth;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  pointer-events: none;
+  & > * {
+    pointer-events: auto;
+  }
+}
+
+.pageNumbers {
+  display: flex;
+  font-size: 1.2rem;
+  gap: 0.5em;
+  padding: 1em;
+
+  .pageNumber {
+    padding: 0.2em 0.4em;
+    opacity: 0.5;
+    position: relative;
+
+    &[aria-selected="true"],
+    &:hover {
+      opacity: 1;
+    }
+
+    .number {
+      display: block;
+      transform: translateY(1px);
+    }
+  }
+}
