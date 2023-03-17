@@ -1,0 +1,17 @@
+.nav {
+  display: flex;
+  align-items: center;
+  background-color: var(--gray-400);
+  width: auto;
+  border-radius: 0.25rem;
+  height: 3rem;
+
+  & li {
+    list-style: none;
+  }
+  
+  & ul {
+    margin: 0;
+    padding: 0;
+  }
+}

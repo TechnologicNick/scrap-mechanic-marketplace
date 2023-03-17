@@ -10,8 +10,25 @@
   height: 3rem;
 }
 
-.button:hover {
-  background-color: var(--gray-500);
+a.button {
+  text-decoration: none;
+}
+
+.button {
+  position: relative;
+  
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 0.25rem;
+    background-color: transparent;
+    transition: background-color 0.2s ease-out;
+  }
+
+  &:hover::after {
+    background-color: rgba($color: white, $alpha: 0.05);
+  }
 }
 
 .primary {
