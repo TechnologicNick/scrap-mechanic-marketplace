@@ -8,6 +8,7 @@ export default function Marketplace() {
       <Carrousel>
         {[
           <Image
+            key={0}
             src={advancedLighting}
             alt="Advanced Lighting"
             width={1600}
@@ -16,6 +17,7 @@ export default function Marketplace() {
             style={{ objectFit: "cover", maxWidth: "100%" }}
           />,
           <Image
+            key={1}
             src={advancedLighting}
             alt="Advanced Lighting"
             width={1600}
@@ -24,6 +26,7 @@ export default function Marketplace() {
             style={{ objectFit: "cover", maxWidth: "100%" }}
           />,
           <Image
+            key={2}
             src={advancedLighting}
             alt="Advanced Lighting"
             width={1600}
