@@ -4,3 +4,12 @@
   padding-inline: 1rem;
   box-sizing: content-box;
 }
+
+.breadcrumbsAndCoins {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-start: 1.5rem;
+  margin-block-end: 1rem;
+  padding-inline: 1rem;
+}

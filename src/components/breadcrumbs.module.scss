@@ -1,0 +1,26 @@
+.breadcrumbs {
+  a, .separator {
+    color: rgba($color: white, $alpha: 0.5);
+  }
+
+  ol {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    gap: 0.25rem;
+  }
+
+  a {
+    text-decoration: none;
+    transition: color 0.2s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      color: white;
+    }
+  }
+}
