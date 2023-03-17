@@ -62,6 +62,19 @@ $maxWidth: 100%;
   justify-content: center;
   align-items: center;
 
+  .autoScroll {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    color: rgba($color: white, $alpha: 0.5);
+    transition: color 0.2s ease-out;
+
+    &:hover {
+      color: white;
+    }
+  }
+
   .pageButton {
     position: relative;
     width: 2.5rem;

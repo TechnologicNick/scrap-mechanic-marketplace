@@ -1,8 +1,32 @@
 "use client";
 
 import styles from "./carrousel.module.scss";
-import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
-import { TbChevronLeft, TbChevronRight } from "react-icons/tb";
+import { ReactNode, RefObject, useCallback, useEffect, useRef, useState } from "react";
+import { TbChevronLeft, TbChevronRight, TbPlayerPauseFilled, TbPlayerPlayFilled } from "react-icons/tb";
+import useInterval from "@/hooks/use-interval";
+
+const scroll = (ref: RefObject<HTMLDivElement>, direction: "left" | "right") => {
+  const { current } = ref;
+  if (!current) return;
+
+  const { scrollWidth, clientWidth } = current;
+  const scrollLeft = current.scrollLeft;
+  const maxScroll = scrollWidth - clientWidth;
+
+  if (direction === "left") {
+    if (scrollLeft === 0) {
+      current.scrollTo({ left: maxScroll, behavior: "smooth" });
+    } else {
+      current.scrollTo({ left: closestMultiple(scrollLeft - clientWidth, clientWidth), behavior: "smooth" });
+    }
+  } else {
+    if (scrollLeft === maxScroll) {
+      current.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      current.scrollTo({ left: closestMultiple(scrollLeft + clientWidth, clientWidth), behavior: "smooth" });
+    }
+  }
+};
 
 interface CarrouselPaginationProps {
   pageNumbers: number[];
@@ -11,6 +35,7 @@ interface CarrouselPaginationProps {
 
 const CarrouselPagination = ({ pageNumbers, carrouselRef }: CarrouselPaginationProps) => {
   const [pageIndex, setPageIndex] = useState(0);
+  const [autoScroll, setAutoScroll] = useState(true);
 
   const handlePageNumberClick = useCallback(
     (index: number) => {
@@ -39,8 +64,23 @@ const CarrouselPagination = ({ pageNumbers, carrouselRef }: CarrouselPaginationP
     };
   }, [carrouselRef]);
 
+  useInterval(
+    () => {
+      autoScroll && scroll(carrouselRef, "right");
+    },
+    4000,
+    [pageNumbers.length, carrouselRef, autoScroll]
+  );
+
   return (
     <div className={styles.pagination}>
+      <button
+        className={styles.autoScroll}
+        onClick={() => setAutoScroll(!autoScroll)}
+        aria-label={autoScroll ? "Pause automatic slideshow" : "Play automatic slideshow"}
+      >
+        {autoScroll ? <TbPlayerPauseFilled /> : <TbPlayerPlayFilled />}
+      </button>
       {pageNumbers.map((pageNumber, index) => (
         <button
           key={pageNumber}
@@ -48,7 +88,7 @@ const CarrouselPagination = ({ pageNumbers, carrouselRef }: CarrouselPaginationP
           onClick={() => handlePageNumberClick(index)}
           role="tab"
           aria-selected={index === pageIndex}
-          title={`Go to page ${pageNumber}`}
+          aria-label={`Go to page ${pageNumber}`}
         />
       ))}
     </div>
@@ -66,43 +106,20 @@ export interface CarrouselProps {
 export default function Carrousel({ children: children }: CarrouselProps) {
   const ref = useRef<HTMLDivElement>(null);
 
-  const handleScroll = (direction: "left" | "right") => {
-    const { current } = ref;
-    if (!current) return;
-
-    const { scrollWidth, clientWidth } = current;
-    const scrollLeft = current.scrollLeft;
-    const maxScroll = scrollWidth - clientWidth;
-
-    if (direction === "left") {
-      if (scrollLeft === 0) {
-        current.scrollTo({ left: maxScroll, behavior: "smooth" });
-      } else {
-        current.scrollTo({ left: closestMultiple(scrollLeft - clientWidth, clientWidth), behavior: "smooth" });
-      }
-    } else {
-      if (scrollLeft === maxScroll) {
-        current.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        current.scrollTo({ left: closestMultiple(scrollLeft + clientWidth, clientWidth), behavior: "smooth" });
-      }
-    }
-  };
-
   return (
     <div>
       <div className={styles.wrapper}>
         <div className={styles.buttons}>
-          <button onClick={() => handleScroll("left")}>
+          <button onClick={() => scroll(ref, "left")}>
             <TbChevronLeft size={40} />
           </button>
-          <button onClick={() => handleScroll("right")}>
+          <button onClick={() => scroll(ref, "right")}>
             <TbChevronRight size={40} />
           </button>
         </div>
         <div ref={ref} className={styles.carrousel} style={{ "--page-count": children.length } as any}>
-          {children.map((child) => (
-            <div>{child}</div>
+          {children.map((child, index) => (
+            <div key={index}>{child}</div>
           ))}
         </div>
       </div>
