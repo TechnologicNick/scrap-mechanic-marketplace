@@ -41,6 +41,15 @@ $maxWidth: 100%;
     & > * {
       pointer-events: auto;
     }
+
+    & > * {
+      background-color: rgba($color: #111218, $alpha: 0.7);
+      margin-inline: 0.5rem;
+      padding-block: 1rem;
+      border: 1px solid var(--gray-400);
+      border-radius: 0.25rem;
+      backdrop-filter: blur(0.5rem);
+    }
   }
 }
 
