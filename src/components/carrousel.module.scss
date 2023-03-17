@@ -53,44 +53,29 @@ $maxWidth: 100%;
   }
 }
 
-// Page numbers
-.topRight {
-  max-width: $maxWidth;
-  position: absolute;
-  top: 0;
-  z-index: 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  
-  pointer-events: none;
-  & > * {
-    pointer-events: auto;
-  }
-}
-
-.pageNumbers {
+.pagination {
   display: flex;
   font-size: 1.2rem;
   gap: 0.5em;
   padding: 1em;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 
-  .pageNumber {
-    padding: 0.2em 0.4em;
-    opacity: 0.5;
+  .pageButton {
     position: relative;
+    width: 2.5rem;
+    height: 0.25rem;
+    border-radius: 0.25rem;
+    background-color: rgba($color: white, $alpha: 0.5);
+    transition: background-color 0.2s ease-out;
 
-    &[aria-selected="true"],
-    &:hover {
-      opacity: 1;
+    &[aria-selected="true"] {
+      background-color: var(--primary);
     }
 
-    .number {
-      display: block;
-      transform: translateY(1px);
+    &:hover {
+      background-color: white;
     }
   }
 }

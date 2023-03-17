@@ -40,20 +40,17 @@ const CarrouselPagination = ({ pageNumbers, carrouselRef }: CarrouselPaginationP
   }, [carrouselRef]);
 
   return (
-    <div className={styles.topRight}>
-      <div className={styles.pageNumbers}>
-        {pageNumbers.map((pageNumber, index) => (
-          <button
-            key={pageNumber}
-            className={styles.pageNumber}
-            onClick={() => handlePageNumberClick(index)}
-            role="tab"
-            aria-selected={index === pageIndex}
-          >
-            <span className={styles.number}>{pageNumber}</span>
-          </button>
-        ))}
-      </div>
+    <div className={styles.pagination}>
+      {pageNumbers.map((pageNumber, index) => (
+        <button
+          key={pageNumber}
+          className={styles.pageButton}
+          onClick={() => handlePageNumberClick(index)}
+          role="tab"
+          aria-selected={index === pageIndex}
+          title={`Go to page ${pageNumber}`}
+        />
+      ))}
     </div>
   );
 };
@@ -93,21 +90,23 @@ export default function Carrousel({ children: children }: CarrouselProps) {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div>
+      <div className={styles.wrapper}>
+        <div className={styles.buttons}>
+          <button onClick={() => handleScroll("left")}>
+            <TbChevronLeft size={40} />
+          </button>
+          <button onClick={() => handleScroll("right")}>
+            <TbChevronRight size={40} />
+          </button>
+        </div>
+        <div ref={ref} className={styles.carrousel} style={{ "--page-count": children.length } as any}>
+          {children.map((child) => (
+            <div>{child}</div>
+          ))}
+        </div>
+      </div>
       <CarrouselPagination pageNumbers={children.map((_, index) => index + 1)} carrouselRef={ref} />
-      <div className={styles.buttons}>
-        <button onClick={() => handleScroll("left")}>
-          <TbChevronLeft size={40} />
-        </button>
-        <button onClick={() => handleScroll("right")}>
-          <TbChevronRight size={40} />
-        </button>
-      </div>
-      <div ref={ref} className={styles.carrousel} style={{ "--page-count": children.length } as any}>
-        {children.map((child) => (
-          <div>{child}</div>
-        ))}
-      </div>
     </div>
   );
 }
