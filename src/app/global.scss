@@ -1,0 +1,22 @@
+:root {
+  --gray-700: #111218;
+  --gray-600: #15171e;
+  --gray-500: #1a1c23;
+  --gray-400: #22242c;
+  --gray-300: #292b33;
+  --background-color: var(--gray-700);
+  --primary: #F5A524
+}
+
+body {
+  margin: 0;
+  background-color: var(--background-color);
+}
+
+button {
+  border: unset;
+  background-color: unset;
+  margin: unset;
+  padding: unset;
+  cursor: pointer;
+}
