@@ -14,7 +14,7 @@ export type CreditsDisplayProps = XOR<
 export default function CreditsDisplay({ credits, text }: CreditsDisplayProps) {
   return (
     <span className={styles.display}>
-      <WonkCreditsIcon color="var(--primary)" />
+      <WonkCreditsIcon color="var(--primary)" size={20} />
       {credits && <span>{credits}</span>}
       {text && <span>{text}</span>}
     </span>
