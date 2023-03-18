@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "prettier": "2.8.4",
-    "ts-xor": "^1.1.0"
+    "ts-xor": "^1.1.0",
+    "typescript-plugin-css-modules": "^4.2.3"
   }
 }
