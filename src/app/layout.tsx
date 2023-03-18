@@ -4,6 +4,7 @@ import Header from "@/components/header";
 import styles from "./layout.module.scss";
 import Nav from "@/components/nav";
 import Breadcrumbs from "@/components/breadcrumbs";
+import CreditsDisplay from "@/components/credits-display";
 
 export const metadata = {
   title: "Scrap Mechanic Marketplace",
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: LayoutProps) {
                 { element: "Marketplace", href: "/marketplace" },
               ]}
             />
+            <CreditsDisplay credits={1900} />
           </div>
           {children}
         </div>
