@@ -1,0 +1,11 @@
+.muted {
+  color: var(--text-muted);
+  transition: color 0.2s ease-out;
+}
+
+.mutedHover {
+  @extend .muted;
+  &:hover {
+    color: white;
+  }
+}

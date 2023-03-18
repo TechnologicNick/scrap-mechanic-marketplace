@@ -13,3 +13,21 @@
   margin-block-end: 1rem;
   padding-inline: 1rem;
 }
+
+.balance {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  .plus {
+    background-color: var(--gray-400);
+    color: rgba($color: white, $alpha: 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 0.25rem;
+  }
+}
+
