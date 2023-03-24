@@ -1,6 +1,6 @@
 import Carrousel from "@/components/carrousel";
 import Image from "next/image";
-import advancedLighting from "@/public/items/advanced-lighting/fullres.png";
+import { metadata } from "./items/static-content/advanced-lighting/item-metadata";
 
 export default function Marketplace() {
   return (
@@ -9,7 +9,7 @@ export default function Marketplace() {
         {[
           <Image
             key={0}
-            src={advancedLighting}
+            src={metadata.thumbnail}
             alt="Advanced Lighting"
             width={1600}
             height={360}
@@ -18,7 +18,7 @@ export default function Marketplace() {
           />,
           <Image
             key={1}
-            src={advancedLighting}
+            src={metadata.thumbnail}
             alt="Advanced Lighting"
             width={1600}
             height={360}
@@ -27,7 +27,7 @@ export default function Marketplace() {
           />,
           <Image
             key={2}
-            src={advancedLighting}
+            src={metadata.thumbnail}
             alt="Advanced Lighting"
             width={1600}
             height={360}
