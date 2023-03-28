@@ -1,4 +1,7 @@
-export const itemList = [import("./advanced-lighting/item-metadata").then((item) => item.metadata)];
+export const itemList = [
+  import("./advanced-lighting/item-metadata").then((item) => item.metadata),
+  import("./extra-hotbars/item-metadata").then((item) => item.metadata),
+];
 
 export type ItemId = Awaited<(typeof itemList)[number]>["id"];
 
