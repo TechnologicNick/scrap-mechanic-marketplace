@@ -1,8 +1,10 @@
 import Carrousel from "@/components/carrousel";
+import ItemGrid from "@/components/item-grid";
 import Image from "next/image";
 import { metadata } from "./items/static-content/advanced-lighting/item-metadata";
+import { getItem } from "./items/static-content/item-list";
 
-export default function Marketplace() {
+export default async function Marketplace() {
   return (
     <main>
       <Carrousel>
@@ -37,6 +39,17 @@ export default function Marketplace() {
         ]}
       </Carrousel>
       <h1>Scrap Mechanic Marketplace</h1>
+      <ItemGrid
+        items={[
+          {
+            metadata: await getItem("advanced-lighting"),
+          },
+          {
+            metadata: await getItem("extra-hotbars"),
+          },
+        ]}
+      />
+      <div style={{ height: "200px" }}></div>
     </main>
   );
 }

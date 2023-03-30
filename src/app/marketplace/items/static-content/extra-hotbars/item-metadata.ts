@@ -7,7 +7,9 @@ export const metadata = {
   title: "Extra Hotbars" as const,
   description:
     "Are you tired of constantly switching between hotbars? Look no further than Extra Hotbars! With this marketplace item, you'll receive 3 additional hotbars, bringing your total to 6. That's enough space for up to 60 items right at your fingertips!",
-  price: 1900 as const,
+  price: 500 as const,
+  originalPrice: 700 as const,
+  rarity: "epic",
   thumbnail: thumbnail,
   images: [thumbnail],
   content: Content,

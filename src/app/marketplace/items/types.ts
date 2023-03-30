@@ -6,6 +6,8 @@ export type ItemMetadata = Readonly<{
   title: string;
   description: string;
   price: number;
+  originalPrice?: number;
+  rarity: "common" | "uncommon" | "rare" | "epic" | "legendary";
   thumbnail: StaticImageData;
   images: StaticImageData[];
   content: MDXContent;

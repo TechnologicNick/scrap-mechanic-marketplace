@@ -16,6 +16,7 @@ const nextConfig = {
   experimental: {
     appDir: true,
     mdxRs: true,
+    typedRoutes: true,
   },
   pageExtensions: ["tsx", "mdx"],
 };
