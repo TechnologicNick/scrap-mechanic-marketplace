@@ -1,0 +1,15 @@
+.section {
+  margin-block: 4rem;
+
+  & + & {
+    border-top: 1px solid var(--gray-300);
+  }
+}
+
+.columns {
+  column-gap: 2em;
+
+  & > * {
+    break-inside: avoid;
+  }
+}

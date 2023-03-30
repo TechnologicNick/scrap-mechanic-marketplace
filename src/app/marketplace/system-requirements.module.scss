@@ -1,0 +1,19 @@
+.systemRequirements {
+  .muted {
+    color: var(--text-muted);
+  }
+
+  h3 {
+    margin-block: 0;
+  }
+
+  dt {
+    font-weight: 600;
+  }
+
+  dd {
+    margin: 0;
+    color: var(--text-muted);
+    margin-block-end: 1rem;
+  }
+}

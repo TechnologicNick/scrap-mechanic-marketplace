@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import SystemRequirements from "../../system-requirements";
 import { getItem, getItemList } from "../static-content/item-list";
 
 export async function generateStaticParams() {
@@ -36,5 +37,10 @@ export async function generateMetadata({ params }: PageParams) {
 export default async function Page({ params }: PageParams) {
   const item = await getItem(params.id);
 
-  return <item.content />;
+  return (
+    <div>
+      <item.content />
+      <SystemRequirements />
+    </div>
+  );
 }

@@ -3,6 +3,7 @@ import ItemGrid from "@/components/item-grid";
 import Image from "next/image";
 import { metadata } from "./items/static-content/advanced-lighting/item-metadata";
 import { getItem } from "./items/static-content/item-list";
+import SystemRequirements from "./system-requirements";
 
 export default async function Marketplace() {
   return (
@@ -49,6 +50,7 @@ export default async function Marketplace() {
           },
         ]}
       />
+      <SystemRequirements />
       <div style={{ height: "200px" }}></div>
     </main>
   );
