@@ -3,7 +3,7 @@ import ItemGrid from "@/components/item-grid";
 import PageHeading from "@/components/page-heading";
 import Image from "next/image";
 import { metadata } from "./items/static-content/advanced-lighting/item-metadata";
-import { getItem } from "./items/static-content/item-list";
+import { getItem, getItemList } from "./items/static-content/item-list";
 import SystemRequirements from "./system-requirements";
 
 export default async function Marketplace() {
@@ -44,14 +44,9 @@ export default async function Marketplace() {
         </Carrousel>
         <h1>Scrap Mechanic Marketplace</h1>
         <ItemGrid
-          items={[
-            {
-              metadata: await getItem("advanced-lighting"),
-            },
-            {
-              metadata: await getItem("extra-hotbars"),
-            },
-          ]}
+          items={(await getItemList()).map((item) => ({
+            metadata: item,
+          }))}
         />
         <SystemRequirements />
         <div style={{ height: "200px" }}></div>
