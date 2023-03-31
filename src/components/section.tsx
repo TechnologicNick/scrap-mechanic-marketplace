@@ -1,17 +1,20 @@
 import React from "react";
 import styles from "./section.module.scss";
+import text from "@/styles/text.module.scss";
 
 interface SectionProps {
   heading: string;
+  description?: string;
   children: React.ReactNode;
   className?: string;
 }
 
-export default function Section({ heading, children, className }: SectionProps) {
+export default function Section({ heading, description, children, className }: SectionProps) {
   return (
     <section className={styles.section}>
       <div>
         <h2>{heading}</h2>
+        {description && <p className={text.muted}>{description}</p>}
       </div>
       <div className={className}>{children}</div>
     </section>

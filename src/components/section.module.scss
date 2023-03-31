@@ -1,8 +1,21 @@
+@use "@/styles/breakpoint.global.scss" as breakpoint;
+
 .section {
   margin-block: 4rem;
 
   & + & {
     border-top: 1px solid var(--gray-300);
+  }
+
+  h2 {
+    margin-block: 0;
+    font-size: 2rem;
+  }
+
+  @include breakpoint.from(1440px) {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    column-gap: 4rem;
   }
 }
 

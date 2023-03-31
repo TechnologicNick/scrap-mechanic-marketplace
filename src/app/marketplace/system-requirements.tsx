@@ -1,5 +1,6 @@
 import Section from "@/components/section";
 import styles from "./system-requirements.module.scss";
+import text from "@/styles/text.module.scss";
 
 export default function SystemRequirements() {
   return (
@@ -7,7 +8,7 @@ export default function SystemRequirements() {
       <Section.Columns columnCount={2} columnWidth={"20rem"}>
         <div>
           <h3>Minimum Requirements</h3>
-          <span className={styles.muted}>Requires a 64-bit processor and operating system</span>
+          <span className={text.muted}>Requires a 64-bit processor and operating system</span>
           <Section.Columns as="dl" columnCount={2} columnWidth={"12rem"}>
             <div>
               <dt>Operating System</dt>
@@ -43,7 +44,7 @@ export default function SystemRequirements() {
         </div>
         <div>
           <h3>Recommended Specifications</h3>
-          <span className={styles.muted}>Requires a 64-bit processor and operating system</span>
+          <span className={text.muted}>Requires a 64-bit processor and operating system</span>
           <Section.Columns as="dl" columnCount={2} columnWidth={"12rem"}>
             <div>
               <dt>Operating System</dt>

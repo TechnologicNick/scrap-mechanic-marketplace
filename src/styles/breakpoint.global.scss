@@ -1,0 +1,11 @@
+@mixin from($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin until($width) {
+  @media not all and (min-width: $width) {
+    @content;
+  }
+}
