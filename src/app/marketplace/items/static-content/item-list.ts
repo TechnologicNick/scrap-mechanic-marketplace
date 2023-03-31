@@ -3,6 +3,7 @@ export const itemList = [
   import("./extra-hotbars/item-metadata").then((item) => item.metadata),
   import("./the-modpack-continuation/item-metadata").then((item) => item.metadata),
   import("./technician-bundle/item-metadata").then((item) => item.metadata),
+  import("./duck-souvenir/item-metadata").then((item) => item.metadata),
 ];
 
 export type ItemId = Awaited<(typeof itemList)[number]>["id"];
