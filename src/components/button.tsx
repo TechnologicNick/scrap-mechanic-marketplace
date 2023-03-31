@@ -16,12 +16,14 @@ export type ButtonProps = (ButtonButtonProps | AnchorButtonProps) & {
   iconRight?: React.ReactNode;
   primary?: boolean;
   ghost?: boolean;
+  bold?: boolean;
 };
 
 export default function Button<T extends string>(props: ButtonProps & { href?: Route<T> }) {
   const className = clsx(props.className, styles.button, {
     [styles.primary]: props.primary,
     [styles.ghost]: props.ghost,
+    [styles.bold]: props.bold,
   });
 
   const isAnchor = "href" in props;

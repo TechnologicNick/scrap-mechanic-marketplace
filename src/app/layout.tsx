@@ -7,9 +7,13 @@ import Nav from "@/components/nav";
 import Breadcrumbs from "@/components/breadcrumbs";
 import CreditsDisplay from "@/components/credits-display";
 import clsx from "clsx";
+import Button from "@/components/button";
 
 export const metadata = {
-  title: "Scrap Mechanic Marketplace",
+  title: {
+    default: "Scrap Mechanic Marketplace",
+    template: "%s | Scrap Mechanic Marketplace",
+  },
   description: "Get your favorite Scrap Mechanic mods, blueprints, and more!",
 };
 
@@ -33,10 +37,10 @@ export default function RootLayout({ children }: LayoutProps) {
                 { element: "Marketplace", href: "/marketplace" },
               ]}
             />
-            <button className={clsx(text.mutedHover, styles.balance)}>
+            <Button ghost className={clsx(text.mutedHover, styles.balance)} href="/marketplace/add-funds">
               <CreditsDisplay>Add Wonk Credits</CreditsDisplay>
               <span className={styles.plus}>+</span>
-            </button>
+            </Button>
           </div>
           {children}
         </div>

@@ -9,43 +9,9 @@ import PriceDisplay from "@/components/price-display";
 import Button from "@/components/button";
 import { notFound } from "next/navigation";
 import { useMDXComponents } from "@/mdx-components";
+import { PageParams } from "./layout";
 
 useMDXComponents({});
-
-export async function generateStaticParams() {
-  return (await getItemList()).map((item) => ({
-    params: { id: item.id },
-  }));
-}
-
-interface PageParams {
-  params: Awaited<ReturnType<typeof generateStaticParams>>[number]["params"];
-}
-
-export async function generateMetadata({ params }: PageParams) {
-  const item = await getItem(params.id);
-  if (!item) {
-    notFound();
-  }
-
-  return {
-    title: item.title,
-    description: item.description,
-    openGraph: {
-      type: "website",
-      siteName: "Scrap Mechanic Marketplace",
-      title: item.title,
-      description: item.description,
-      images: [
-        {
-          url: item.thumbnail.src,
-          width: item.thumbnail.width,
-          height: item.thumbnail.height,
-        },
-      ],
-    },
-  } satisfies Metadata;
-}
 
 export default async function Page({ params }: PageParams) {
   const item = await getItem(params.id);
@@ -93,13 +59,14 @@ export default async function Page({ params }: PageParams) {
               </div>
             </div>
             <PriceDisplay {...item} />
-            <Button primary href={`/marketplace/items/${item.id}/buy-now`}>
+            <Button primary bold href={`/marketplace/items/${item.id}/buy-now`}>
               Buy Now
             </Button>
           </section>
         </div>
       </div>
       <SystemRequirements />
+      <div style={{ height: "200px" }}></div>
     </main>
   );
 }
