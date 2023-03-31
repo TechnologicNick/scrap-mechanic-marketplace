@@ -31,40 +31,6 @@
   .price {
     padding: 2rem;
     padding-top: 0;
-
-    .discountDisplay {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-
-      .left {
-        display: flex;
-        gap: 0.5rem;
-        align-items: center;
-      }
-
-      .new {
-        color: var(--green-500);
-        font-size: 1.5em;
-        font-weight: 700;
-      }
-  
-      .old {
-        color: var(--text-muted);
-        text-decoration: line-through;
-      }
-  
-      .discount {
-        background-color: var(--green-500);
-        color: #23252b;
-        border-radius: 0.25rem;
-        padding-inline: 0.25rem;
-        padding-block: 0.125rem;
-        font-weight: 700;
-        font-size: 0.9em;
-      }
-    }
   }
 
   &:hover {

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import CreditsDisplay from "./credits-display";
 import styles from "./item-card.module.scss";
+import PriceDisplay from "./price-display";
 
 interface ItemCardProps {
   metadata: ItemMetadata;
@@ -25,21 +26,7 @@ export default function ItemCard({ metadata }: ItemCardProps) {
           <span className={styles.rarity}>{metadata.rarity}</span>
         </div>
         <div className={styles.price}>
-          {metadata.originalPrice && (
-            <div className={styles.discountDisplay}>
-              <div className={styles.left}>
-                <span className={styles.new}>
-                  <CreditsDisplay size={24}>{metadata.price} Wonk Credits</CreditsDisplay>
-                </span>
-                <span className={styles.old} title="Original price">
-                  {metadata.originalPrice} Wonk Credits
-                </span>
-              </div>
-              <span className={styles.discount}>
-                {Math.ceil(((metadata.price - metadata.originalPrice) / metadata.originalPrice) * 100)}%
-              </span>
-            </div>
-          )}
+          <PriceDisplay {...metadata} />
         </div>
       </div>
     </Link>

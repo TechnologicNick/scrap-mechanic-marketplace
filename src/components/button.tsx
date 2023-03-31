@@ -1,27 +1,26 @@
 "use client";
 
 import clsx from "clsx";
+import type { Route } from "next";
 import Link from "next/link";
 import { useRef } from "react";
 import { AriaButtonProps, mergeProps, useButton } from "react-aria";
 import styles from "./button.module.scss";
 
-type ButtonButtonProps = AriaButtonProps<"button"> &
-  React.HTMLAttributes<HTMLButtonElement> & {};
+type ButtonButtonProps = AriaButtonProps<"button"> & React.HTMLAttributes<HTMLButtonElement> & {};
 
-type AnchorButtonProps = AriaButtonProps<"a"> &
-  React.HTMLAttributes<HTMLAnchorElement> & {
-    href: string;
-  };
+type AnchorButtonProps = Omit<AriaButtonProps<"a"> & React.HTMLAttributes<HTMLAnchorElement>, "href">;
 
 export type ButtonProps = (ButtonButtonProps | AnchorButtonProps) & {
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
+  primary?: boolean;
   ghost?: boolean;
 };
 
-export default function Button(props: ButtonProps) {
+export default function Button<T extends string>(props: ButtonProps & { href?: Route<T> }) {
   const className = clsx(props.className, styles.button, {
+    [styles.primary]: props.primary,
     [styles.ghost]: props.ghost,
   });
 
@@ -34,7 +33,13 @@ export default function Button(props: ButtonProps) {
 
   if (isAnchor) {
     return (
-      <Link {...buttonProps} ref={anchorRef} className={className} href={href!}>
+      <Link
+        {...buttonProps}
+        // @ts-ignore
+        ref={anchorRef}
+        className={className}
+        href={href!}
+      >
         {iconLeft}
         {children}
         {iconRight}

@@ -1,11 +1,9 @@
 @use "@/styles/breakpoint.global.scss" as breakpoint;
 
 .section {
-  margin-block: 4rem;
-
-  & + & {
-    border-top: 1px solid var(--gray-300);
-  }
+  margin-top: 4rem;
+  padding-block: 4rem;
+  border-top: 1px solid var(--gray-300);
 
   h2 {
     margin-block: 0;

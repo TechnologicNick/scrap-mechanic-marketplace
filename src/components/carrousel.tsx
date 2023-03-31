@@ -101,13 +101,14 @@ const closestMultiple = (num: number, multiple: number) => {
 
 export interface CarrouselProps {
   children: ReactNode[];
+  className?: string;
 }
 
-export default function Carrousel({ children: children }: CarrouselProps) {
+export default function Carrousel({ children, className }: CarrouselProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   return (
-    <div>
+    <div className={className}>
       <div className={styles.wrapper}>
         <div className={styles.buttons}>
           <button onClick={() => scroll(ref, "left")}>

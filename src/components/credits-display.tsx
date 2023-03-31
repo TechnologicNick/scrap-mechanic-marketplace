@@ -16,8 +16,10 @@ export type CreditsDisplayProps = {
 
 export default function CreditsDisplay({ credits, children, size = "1.5em" }: CreditsDisplayProps) {
   return (
-    <span className={styles.display}>
-      <WonkCreditsIcon color="var(--primary)" size={size} />
+    <span>
+      <span className={styles.icon}>
+        <WonkCreditsIcon color="var(--primary)" size={size} style={{ minWidth: size }} />
+      </span>
       {credits && <span>{credits}</span>}
       {children && <span>{children}</span>}
     </span>
