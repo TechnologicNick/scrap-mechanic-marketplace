@@ -2,12 +2,7 @@ import { Inter } from "next/font/google";
 import "./global.scss";
 import Header from "@/components/header";
 import styles from "./layout.module.scss";
-import text from "@/styles/text.module.scss";
 import Nav from "@/components/nav";
-import Breadcrumbs from "@/components/breadcrumbs";
-import CreditsDisplay from "@/components/credits-display";
-import clsx from "clsx";
-import Button from "@/components/button";
 
 export const metadata = {
   title: {
@@ -30,18 +25,6 @@ export default function RootLayout({ children }: LayoutProps) {
         <div className={styles.page}>
           <Header />
           <Nav />
-          <div className={styles.breadcrumbsAndCoins}>
-            <Breadcrumbs
-              crumbs={[
-                { element: "Scrap Mechanic", href: "/" },
-                { element: "Marketplace", href: "/marketplace" },
-              ]}
-            />
-            <Button ghost className={clsx(text.mutedHover, styles.balance)} href="/marketplace/add-funds">
-              <CreditsDisplay>Add Wonk Credits</CreditsDisplay>
-              <span className={styles.plus}>+</span>
-            </Button>
-          </div>
           {children}
         </div>
       </body>

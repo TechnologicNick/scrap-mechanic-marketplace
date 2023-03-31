@@ -1,0 +1,31 @@
+.breadcrumbsAndCoins {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-start: 1.5rem;
+  margin-block-end: 1rem;
+  padding-inline: 1rem;
+}
+
+.balance {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 3rem;
+  margin-inline: -1rem;
+  margin-block: -0.75rem;
+  font-size: 0.875rem;
+
+  .plus {
+    background-color: var(--gray-400);
+    color: rgba($color: white, $alpha: 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 0.25rem;
+    vertical-align: middle;
+    line-height: 0px;
+  }
+}
