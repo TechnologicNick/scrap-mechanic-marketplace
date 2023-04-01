@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getItemList, getItem } from "../static-content/item-list";
 
+export const dynamic = "force-static";
+
 export async function generateStaticParams() {
   return (await getItemList()).map((item) => ({
     params: { id: item.id },

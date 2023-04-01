@@ -13,6 +13,10 @@ export const metadata = {
   title: "Not enough Wonk Credits",
 } satisfies Metadata;
 
+export const dynamic = "force-static";
+
+export { generateStaticParams } from "../layout";
+
 export default async function BuyNowPage({ params }: PageParams) {
   const item = await getItem(params.id);
   if (!item) {

@@ -14,6 +14,10 @@ import PageHeading from "@/components/page-heading";
 
 useMDXComponents({});
 
+export const dynamic = "force-static";
+
+export { generateStaticParams } from "./layout";
+
 export default async function Page({ params }: PageParams) {
   const item = await getItem(params.id);
   if (!item) {
