@@ -5,6 +5,7 @@ export const itemList = [
   import("./technician-bundle/item-metadata").then((item) => item.metadata),
   import("./duck-souvenir/item-metadata").then((item) => item.metadata),
   import("./scrap-factory/item-metadata").then((item) => item.metadata),
+  import("./grow-labs/item-metadata").then((item) => item.metadata),
 ];
 
 export type ItemId = Awaited<(typeof itemList)[number]>["id"];
