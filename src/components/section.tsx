@@ -7,11 +7,12 @@ interface SectionProps {
   description?: string;
   children: React.ReactNode;
   className?: string;
+  id?: string;
 }
 
-export default function Section({ heading, description, children, className }: SectionProps) {
+export default function Section({ heading, description, children, className, id }: SectionProps) {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id={id}>
       <div>
         <h2>{heading}</h2>
         {description && <p className={text.muted}>{description}</p>}

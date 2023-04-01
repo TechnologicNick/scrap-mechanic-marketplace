@@ -14,6 +14,13 @@ export default function Nav() {
       </ul>
       <ul>
         <li>
+          <Button ghost href={"/marketplace#chapter-2"} noNextLink>
+            Chapter 2
+          </Button>
+        </li>
+      </ul>
+      <ul>
+        <li>
           <Button ghost href={"/marketplace#just-for-you"}>
             Just for you
           </Button>

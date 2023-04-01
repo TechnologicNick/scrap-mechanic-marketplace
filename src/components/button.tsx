@@ -4,7 +4,7 @@ import clsx from "clsx";
 import type { Route } from "next";
 import Link from "next/link";
 import { useRef } from "react";
-import { AriaButtonProps, mergeProps, useButton } from "react-aria";
+import { AriaButtonProps, useButton } from "react-aria";
 import styles from "./button.module.scss";
 
 type ButtonButtonProps = AriaButtonProps<"button"> & React.HTMLAttributes<HTMLButtonElement> & {};
@@ -17,6 +17,7 @@ export type ButtonProps = (ButtonButtonProps | AnchorButtonProps) & {
   primary?: boolean;
   ghost?: boolean;
   bold?: boolean;
+  noNextLink?: boolean;
 };
 
 export default function Button<T extends string>(props: ButtonProps & { href?: Route<T> }) {
@@ -34,6 +35,22 @@ export default function Button<T extends string>(props: ButtonProps & { href?: R
   const { children, iconLeft, iconRight, href } = props;
 
   if (isAnchor) {
+    if (props.noNextLink) {
+      return (
+        <a
+          {...buttonProps}
+          // @ts-ignore
+          ref={anchorRef}
+          className={className}
+          href={href!}
+        >
+          {iconLeft}
+          {children}
+          {iconRight}
+        </a>
+      );
+    }
+
     return (
       <Link
         {...buttonProps}

@@ -9,6 +9,11 @@ export default async function AddFundsPage() {
       <PageHeading crumbs={[{ element: "Add funds", href: "/marketplace/add-funds" }]} />
       <main>
         <h1>Get more Wonk Credits</h1>
+        <p>
+          Wonk Credits are the new premium currency used in the Scrap Mechanic marketplace. They allow you to purchase a
+          variety of in-game items, including basic game features, cosmetics, advanced mods created by the community,
+          and pre-order options for upcoming content releases.
+        </p>
         <ItemGrid
           variant="two-three"
           items={[

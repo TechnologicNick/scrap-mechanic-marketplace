@@ -4,7 +4,7 @@ import text from "@/styles/text.module.scss";
 
 export default function SystemRequirements() {
   return (
-    <Section heading="System Requirements" className={styles.systemRequirements}>
+    <Section heading="System Requirements" className={styles.systemRequirements} id="system-requirements">
       <Section.Columns columnCount={2} columnWidth={"20rem"}>
         <div>
           <h3>Minimum Requirements</h3>
