@@ -5,9 +5,9 @@ import CreditsDisplay from "@/components/credits-display";
 import clsx from "clsx";
 import Button from "@/components/button";
 
-interface PageHeadingProps extends BreadcrumbsProps {}
+interface PageHeadingProps<T extends string> extends BreadcrumbsProps<T> {}
 
-export default function PageHeading({ crumbs }: PageHeadingProps) {
+export default function PageHeading<T extends string>({ crumbs }: PageHeadingProps<T>) {
   return (
     <div className={styles.breadcrumbsAndCoins}>
       <Breadcrumbs

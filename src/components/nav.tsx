@@ -14,7 +14,7 @@ export default function Nav() {
       </ul>
       <ul>
         <li>
-          <Button ghost href={"#just-for-you"}>
+          <Button ghost href={"/marketplace#just-for-you"}>
             Just for you
           </Button>
         </li>

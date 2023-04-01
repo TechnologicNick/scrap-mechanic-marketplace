@@ -2,7 +2,7 @@ import SystemRequirements from "@/app/marketplace/system-requirements";
 import Button from "@/components/button";
 import CreditsDisplay from "@/components/credits-display";
 import PageHeading from "@/components/page-heading";
-import type { Metadata } from "next";
+import type { Metadata, Route } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getItem } from "../../static-content/item-list";
@@ -23,8 +23,8 @@ export default async function BuyNowPage({ params }: PageParams) {
     <>
       <PageHeading
         crumbs={[
-          { element: item.title, href: `/marketplace/items/${item.id}` },
-          { element: "Checkout", href: `/marketplace/items/${item.id}/buy-now` },
+          { element: item.title, href: `/marketplace/items/${item.id}` as Route },
+          { element: "Checkout", href: `/marketplace/items/${item.id}/buy-now` as Route },
         ]}
       />
       <main>
