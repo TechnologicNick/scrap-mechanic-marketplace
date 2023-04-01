@@ -5,6 +5,7 @@ import styles from "./credits-display.module.scss";
 
 export type CreditsDisplayProps = {
   size?: ComponentProps<typeof WonkCreditsIcon>["size"];
+  icon?: boolean;
 } & XOR<
   {
     credits: number;
@@ -14,12 +15,14 @@ export type CreditsDisplayProps = {
   }
 >;
 
-export default function CreditsDisplay({ credits, children, size = "1.5em" }: CreditsDisplayProps) {
+export default function CreditsDisplay({ credits, children, size = "1.5em", icon = true }: CreditsDisplayProps) {
   return (
     <span>
-      <span className={styles.icon}>
-        <WonkCreditsIcon color="var(--primary)" size={size} style={{ minWidth: size }} />
-      </span>
+      {icon && (
+        <span className={styles.icon}>
+          <WonkCreditsIcon color="var(--primary)" size={size} style={{ minWidth: size }} />
+        </span>
+      )}
       {credits && <span>{credits}</span>}
       {children && <span>{children}</span>}
     </span>

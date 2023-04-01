@@ -7,6 +7,11 @@ export const itemList = [
   import("./scrap-factory/item-metadata").then((item) => item.metadata),
   import("./grow-labs/item-metadata").then((item) => item.metadata),
   import("./revival-baguette-weapon-charm/item-metadata").then((item) => item.metadata),
+  import("./wonk-credits/item-metadata").then((item) => item.metadata[0]),
+  import("./wonk-credits/item-metadata").then((item) => item.metadata[1]),
+  import("./wonk-credits/item-metadata").then((item) => item.metadata[2]),
+  import("./wonk-credits/item-metadata").then((item) => item.metadata[3]),
+  import("./wonk-credits/item-metadata").then((item) => item.metadata[4]),
 ];
 
 export type ItemId = Awaited<(typeof itemList)[number]>["id"];

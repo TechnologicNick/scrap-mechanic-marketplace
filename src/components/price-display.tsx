@@ -1,13 +1,14 @@
+import type { ReactNode } from "react";
 import CreditsDisplay from "./credits-display";
 import styles from "./price-display.module.scss";
 
 interface PriceDisplayProps {
-  price: number;
+  price: number | ReactNode;
   originalPrice?: number;
 }
 
 export default function PriceDisplay({ price, originalPrice }: PriceDisplayProps) {
-  if (originalPrice) {
+  if (typeof price === "number" && originalPrice) {
     const discount = Math.ceil(((price - originalPrice) / originalPrice) * 100);
 
     return (
@@ -25,5 +26,11 @@ export default function PriceDisplay({ price, originalPrice }: PriceDisplayProps
     );
   }
 
-  return <CreditsDisplay size={24}>{price} Wonk Credits</CreditsDisplay>;
+  return (
+    <div className={styles.normalDisplay}>
+      <span className={styles.price}>
+        <CreditsDisplay size={24}>{price}</CreditsDisplay>
+      </span>
+    </div>
+  );
 }

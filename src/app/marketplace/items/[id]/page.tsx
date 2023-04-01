@@ -3,6 +3,7 @@ import Image from "next/image";
 import SystemRequirements from "../../system-requirements";
 import { getItem } from "../static-content/item-list";
 import styles from "./page.module.scss";
+import text from "@/styles/text.module.scss";
 import bearing from "@/../public/bearing.png";
 import PriceDisplay from "@/components/price-display";
 import Button from "@/components/button";
@@ -62,7 +63,19 @@ export default async function Page({ params }: PageParams) {
                   <span className={styles.rarity}>{item.rarity}</span>
                 </div>
               </div>
-              <PriceDisplay {...item} />
+              <PriceDisplay
+                price={
+                  typeof item.price === "string" ? (
+                    <span>
+                      <span className={text.muted}>{item.title} - </span>
+                      <span>{item.price}</span>
+                    </span>
+                  ) : (
+                    item.price
+                  )
+                }
+                originalPrice={"originalPrice" in item ? item.originalPrice : undefined}
+              />
               <Button primary bold href={`/marketplace/items/${item.id}/buy-now`}>
                 Buy Now
               </Button>
