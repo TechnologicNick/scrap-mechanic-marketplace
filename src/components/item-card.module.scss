@@ -10,6 +10,7 @@
   border-radius: 0.25rem;
   overflow: hidden;
   transition: background-color 0.2s ease-out;
+  height: 100%;
 
   .text {
     padding: 2rem;
@@ -31,6 +32,7 @@
   .price {
     padding: 2rem;
     padding-top: 0;
+    margin-top: auto; 
   }
 
   &:hover {

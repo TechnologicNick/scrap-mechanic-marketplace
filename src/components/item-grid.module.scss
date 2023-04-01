@@ -1,5 +1,57 @@
-.grid {
+@use "@/styles/breakpoint.global.scss" as breakpoint;
+
+.itemGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 1rem;
+  
+  &.grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+    @include breakpoint.from(1200px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &.twoThree {
+    @include breakpoint.from(425px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas:
+        "a a"
+        "b c"
+        "d e";
+    }
+
+    @include breakpoint.from(600px) {
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-areas:
+        "a a a b b b"
+        "c c d d e e";
+    }
+  }
+
+  &.twoThree {
+    @include breakpoint.from(425px) {
+      & > :nth-child(1) {
+        grid-area: a;
+      }
+    
+      & > :nth-child(2) {
+        grid-area: b;
+      }
+    
+      & > :nth-child(3) {
+        grid-area: c;
+      }
+    
+      & > :nth-child(4) {
+        grid-area: d;
+      }
+    
+      & > :nth-child(5) {
+        grid-area: e;
+      }
+    }
+
+  }
 }

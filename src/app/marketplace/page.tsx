@@ -44,6 +44,7 @@ export default async function Marketplace() {
         </Carrousel>
         <h1>Scrap Mechanic Marketplace</h1>
         <ItemGrid
+          variant="grid"
           items={(await getItemList()).map((item) => ({
             metadata: item,
           }))}

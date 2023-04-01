@@ -13,14 +13,14 @@ export default function ItemCard({ metadata }: ItemCardProps) {
   return (
     <Link href={`/marketplace/items/${metadata.id}`} className={styles.link}>
       <div className={styles.card}>
-        <Image
-          src={metadata.thumbnail}
-          alt={metadata.title}
-          width={800}
-          height={360}
-          quality={100}
-          style={{ objectFit: "cover", maxWidth: "100%" }}
-        />
+        <div
+          style={{
+            aspectRatio: metadata.thumbnail.width / metadata.thumbnail.height,
+            position: "relative",
+          }}
+        >
+          <Image src={metadata.thumbnail} alt={metadata.title} fill quality={100} />
+        </div>
         <div className={styles.text}>
           <h3 className={styles.title}>{metadata.title}</h3>
           <span className={styles.rarity}>{metadata.rarity}</span>

@@ -1,6 +1,7 @@
 import ItemGrid from "@/components/item-grid";
 import PageHeading from "@/components/page-heading";
 import { getItem } from "../items/static-content/item-list";
+import SystemRequirements from "../system-requirements";
 
 export default async function AddFundsPage() {
   return (
@@ -9,6 +10,7 @@ export default async function AddFundsPage() {
       <main>
         <h1>Get more Wonk Credits</h1>
         <ItemGrid
+          variant="two-three"
           items={[
             {
               metadata: await getItem("10000-wonk-credits"),
@@ -27,6 +29,8 @@ export default async function AddFundsPage() {
             },
           ]}
         />
+        <SystemRequirements />
+        <div style={{ height: "200px" }}></div>
       </main>
     </>
   );

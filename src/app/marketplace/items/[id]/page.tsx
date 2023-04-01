@@ -24,23 +24,17 @@ export default async function Page({ params }: PageParams) {
     <div
       key={index}
       style={{
-        maxWidth: "100%",
         aspectRatio: image.width / image.height,
-        overflowY: "hidden",
+        position: "relative",
       }}
     >
       <Image
         src={image}
         alt={item.title}
-        width={1600}
+        fill
         quality={100}
         priority={index === 0}
         loading={index === 0 ? "eager" : "lazy"}
-        style={{
-          objectFit: "contain",
-          objectPosition: "center top",
-          maxWidth: "100%",
-        }}
       />
     </div>
   ));
