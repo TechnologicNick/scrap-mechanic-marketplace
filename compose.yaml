@@ -1,6 +1,9 @@
 services:
   app:
-    build: .
+    build:
+      context: .
+      args:
+        - NEXT_PUBLIC_APP_URL=https://april-fools-2023.scrapmechanic.net
     container_name: app
     ports:
       - "3000:3000"

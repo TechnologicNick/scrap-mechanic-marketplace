@@ -3,8 +3,14 @@ import "./global.scss";
 import Header from "@/components/header";
 import styles from "./layout.module.scss";
 import Nav from "@/components/nav";
+import { Metadata } from "next";
 
-export const metadata = {
+if (!process.env.NEXT_PUBLIC_APP_URL) {
+  throw new Error("process.env.NEXT_PUBLIC_APP_URL is not defined");
+}
+
+export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL),
   title: {
     default: "Scrap Mechanic Marketplace",
     template: "%s | Scrap Mechanic Marketplace",
