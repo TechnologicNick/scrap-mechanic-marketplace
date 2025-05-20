@@ -1,4 +1,4 @@
-import React from "react";
+import React, { JSX } from "react";
 import styles from "./section.module.scss";
 import text from "@/styles/text.module.scss";
 
@@ -24,7 +24,7 @@ export default function Section({ heading, description, children, className, id 
 
 type SectionColumnsProps = {
   children: React.ReactNode;
-  as?: keyof React.ReactHTML | React.ReactElement;
+  as?: keyof JSX.IntrinsicElements | React.ReactElement;
 } & Required<Pick<React.CSSProperties, "columnCount" | "columnWidth">>;
 
 Section.Columns = function SectionColumns({ children, as = "div", ...style }: SectionColumnsProps) {
@@ -35,10 +35,10 @@ Section.Columns = function SectionColumns({ children, as = "div", ...style }: Se
   return React.cloneElement(
     as,
     {
-      ...as.props,
-      className: [...as.props.className, styles.columns].filter(Boolean).join(" "),
-      style: { ...as.props.style, ...style },
+      ...(as.props as any),
+      className: [...(as.props as any).className, styles.columns].filter(Boolean).join(" "),
+      style: { ...(as.props as any).style, ...style },
     },
-    children
+    children,
   );
 };

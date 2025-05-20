@@ -17,8 +17,8 @@ export const dynamic = "force-static";
 
 export { generateStaticParams } from "../layout";
 
-export default async function BuyNowPage({ params }: PageParams) {
-  const item = await getItem(params.id);
+export default async function BuyNowPage({ params }: { params: Promise<{ id: string }> }) {
+  const item = await getItem((await params).id as any);
   if (!item) {
     notFound();
   }

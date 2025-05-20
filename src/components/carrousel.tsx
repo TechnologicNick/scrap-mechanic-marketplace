@@ -5,7 +5,7 @@ import { ReactNode, RefObject, useCallback, useEffect, useRef, useState } from "
 import { TbChevronLeft, TbChevronRight, TbPlayerPauseFilled, TbPlayerPlayFilled } from "react-icons/tb";
 import useInterval from "@/hooks/use-interval";
 
-const scroll = (ref: RefObject<HTMLDivElement>, direction: "left" | "right") => {
+const scroll = (ref: RefObject<HTMLDivElement | null>, direction: "left" | "right") => {
   const { current } = ref;
   if (!current) return;
 
@@ -30,25 +30,25 @@ const scroll = (ref: RefObject<HTMLDivElement>, direction: "left" | "right") => 
 
 interface CarrouselPaginationProps {
   pageNumbers: number[];
-  carrouselRef: React.RefObject<HTMLDivElement>;
+  ref: React.RefObject<HTMLDivElement | null>;
 }
 
-const CarrouselPagination = ({ pageNumbers, carrouselRef }: CarrouselPaginationProps) => {
+const CarrouselPagination = ({ pageNumbers, ref }: CarrouselPaginationProps) => {
   const [pageIndex, setPageIndex] = useState(0);
   const [autoScroll, setAutoScroll] = useState(true);
 
   const handlePageNumberClick = useCallback(
     (index: number) => {
-      carrouselRef.current?.scrollTo({
-        left: index * carrouselRef.current.clientWidth,
+      ref.current?.scrollTo({
+        left: index * ref.current.clientWidth,
         behavior: "smooth",
       });
     },
-    [carrouselRef]
+    [ref],
   );
 
   useEffect(() => {
-    const { current } = carrouselRef;
+    const { current } = ref;
     if (!current) return;
 
     const handleScroll = () => {
@@ -62,14 +62,14 @@ const CarrouselPagination = ({ pageNumbers, carrouselRef }: CarrouselPaginationP
     return () => {
       current.removeEventListener("scroll", handleScroll);
     };
-  }, [carrouselRef]);
+  }, [ref]);
 
   useInterval(
     () => {
-      autoScroll && scroll(carrouselRef, "right");
+      autoScroll && scroll(ref, "right");
     },
     4000,
-    [pageNumbers.length, carrouselRef, autoScroll]
+    [pageNumbers.length, ref, autoScroll],
   );
 
   return (
@@ -124,7 +124,7 @@ export default function Carrousel({ children, className }: CarrouselProps) {
           ))}
         </div>
       </div>
-      <CarrouselPagination pageNumbers={children.map((_, index) => index + 1)} carrouselRef={ref} />
+      <CarrouselPagination pageNumbers={children.map((_, index) => index + 1)} ref={ref} />
     </div>
   );
 }

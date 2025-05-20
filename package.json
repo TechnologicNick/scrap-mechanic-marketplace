@@ -9,24 +9,24 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/mdx": "^13.2.4",
-    "@types/mdx": "^2.0.3",
-    "@types/node": "18.15.3",
-    "@types/react": "18.0.28",
-    "@types/react-dom": "18.0.11",
-    "clsx": "^1.2.1",
-    "next": "13.2.4",
-    "react": "18.2.0",
-    "react-aria": "^3.23.1",
-    "react-dom": "18.2.0",
-    "react-icons": "^4.8.0",
-    "sass": "^1.59.3",
-    "sharp": "^0.32.0",
-    "typescript": "4.9.5"
+    "@next/mdx": "^15.2.4",
+    "@types/mdx": "^2.0.13",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.1",
+    "clsx": "^2.1.1",
+    "next": "^15.2.4",
+    "react": "^19.1.0",
+    "react-aria": "^3.38.1",
+    "react-dom": "^19.1.0",
+    "react-icons": "^4.12.0",
+    "sass": "^1.86.3",
+    "sharp": "^0.33.5",
+    "typescript": "^5.8.2"
   },
   "devDependencies": {
-    "prettier": "2.8.4",
-    "ts-xor": "^1.1.0",
-    "typescript-plugin-css-modules": "^4.2.3"
+    "prettier": "^3.5.3",
+    "ts-xor": "^1.3.0",
+    "typescript-plugin-css-modules": "^5.1.0"
   }
 }

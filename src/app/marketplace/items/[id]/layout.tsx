@@ -6,16 +6,14 @@ export const dynamic = "force-static";
 
 export async function generateStaticParams() {
   return (await getItemList()).map((item) => ({
-    params: { id: item.id },
+    id: item.id,
   }));
 }
 
-export interface PageParams {
-  params: Awaited<ReturnType<typeof generateStaticParams>>[number]["params"];
-}
+export type PageParams = Awaited<ReturnType<typeof generateStaticParams>>[number];
 
-export async function generateMetadata({ params }: PageParams) {
-  const item = await getItem(params.id);
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+  const item = await getItem((await params).id as any);
   if (!item) {
     notFound();
   }
@@ -42,9 +40,10 @@ export async function generateMetadata({ params }: PageParams) {
   } satisfies Metadata;
 }
 
-interface LayoutParams extends PageParams {
+type LayoutParams = {
+  params: PageParams;
   children: React.ReactNode;
-}
+};
 
 export default async function Layout({ params, children }: LayoutParams) {
   return children;
