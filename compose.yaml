@@ -5,5 +5,15 @@ services:
       args:
         - NEXT_PUBLIC_APP_URL=https://april-fools-2023.scrapmechanic.net
     container_name: app
-    ports:
-      - "3000:3000"
+    networks:
+      - nginx-proxy
+    restart: unless-stopped
+    environment:
+      - PORT=3000
+      - VIRTUAL_HOST=april-fools-2023.scrapmechanic.net
+      - VIRTUAL_PORT=3000
+      - LETSENCRYPT_HOST=april-fools-2023.scrapmechanic.net
+
+networks:
+  nginx-proxy:
+    external: true
